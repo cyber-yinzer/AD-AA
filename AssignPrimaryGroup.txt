@@ -1,0 +1,4 @@
+##Get AD-Group Membership Roles from a Specific OU and Assign Newly Defined Primary Group Identity
+$Group = get-adgroup "OU=User,DC=AD,DC=com" -properties @("primaryGroupToken") Set-ADUser -Identity #Test.User -Replace @{primarygroupid=$group.primaryGroupToken}
+
+##Note please save as a powershell script to run
