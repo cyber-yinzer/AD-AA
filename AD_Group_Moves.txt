@@ -1,0 +1,5 @@
+Assign Group from OU:
+Get-ADUser -SearchBase ‘OU=User,DC=AD,DC=com’ -Filter * | ForEach-Object {Add-ADGroupMember -Identity ‘GroupName’ -Members $_ }
+
+Assign Primary Group:
+$Group = get-adgroup "OU=User,DC=AD,DC=com" -properties @("primaryGroupToken") Set-ADUser -Identity #Test.User -Replace @{primarygroupid=$group.primaryGroupToken}
