@@ -1,5 +1,4 @@
-Assign Group from OU:
+##Get Active Directory User from A Defined OU and Assign Each to a Defined Group
 Get-ADUser -SearchBase ‘OU=User,DC=AD,DC=com’ -Filter * | ForEach-Object {Add-ADGroupMember -Identity ‘GroupName’ -Members $_ }
 
-Assign Primary Group:
-$Group = get-adgroup "OU=User,DC=AD,DC=com" -properties @("primaryGroupToken") Set-ADUser -Identity #Test.User -Replace @{primarygroupid=$group.primaryGroupToken}
+##Note you need to save this as a powershells script to run
